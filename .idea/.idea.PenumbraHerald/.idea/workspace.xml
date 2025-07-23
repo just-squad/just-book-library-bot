@@ -85,7 +85,7 @@
       <updated>1752927308881</updated>
       <workItem from="1752927309965" duration="1677000" />
       <workItem from="1753030653414" duration="41000" />
-      <workItem from="1753206729233" duration="828000" />
+      <workItem from="1753206729233" duration="2366000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -103,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753207392284</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Исправила опечатку в слове src">
+      <option name="closed" value="true" />
+      <created>1753207632207</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753207632207</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +133,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Init" />
     <MESSAGE value="Добавила obj в gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавила obj в gitignore" />
+    <MESSAGE value="Исправила опечатку в слове src" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправила опечатку в слове src" />
   </component>
 </project>
