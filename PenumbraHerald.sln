@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PenumbraHerald", "PenumbraHerald\PenumbraHerald.csproj", "{8F918E63-DBE7-4DFB-A5E4-FB2C3E099AEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PenumbraHerald", "src\PenumbraHerald\PenumbraHerald.csproj", "{8F918E63-DBE7-4DFB-A5E4-FB2C3E099AEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
