@@ -1,10 +1,14 @@
-﻿using Telegram.Bot;
+﻿using System;
+using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 using DotNetEnv;
 using PenumbraHerald.settings;
 using Insight.TelegramBot.WebHook.Controllers;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 Env.Load();
 var token = Environment.GetEnvironmentVariable("TOKEN");
