@@ -22,8 +22,16 @@ builder.Services.AddHttpClient("telegramwebhook").RemoveAllLoggers().AddTypedCli
 builder.Services.AddSingleton<DefaultUpdateController>();
 
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen(opt => { });
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(opt =>
+{
+    opt.SwaggerEndpoint("/swagger/v1/swagger.json", "PenumbraHerald");
+    opt.RoutePrefix = string.Empty;
+});
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

@@ -14,6 +14,9 @@
       <PackageReference Include="Insight.TelegramBot.WebHook" Version="0.20.0" />
       <PackageReference Include="Insight.TelegramBot.WebHook.Controllers" Version="0.20.0" />
       <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.7" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.3.0" />
       <PackageReference Include="Telegram.Bot" Version="22.6.0" />
     </ItemGroup>
 </Project>

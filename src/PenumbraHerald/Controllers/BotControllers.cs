@@ -16,12 +16,9 @@ public class BotController(IOptions<BotConfiguration> Config) : ControllerBase
     [HttpGet("setWebhook")]
     public async Task<string> SetWebHook([FromServices] ITelegramBotClient bot, CancellationToken ct)
     {
-        var botWebhookUrl = Config.Value.IPAddress;
-        var myBotToken = Config.Value.Token;
-        // var webhookUrl = Config.Value.BotWebhookUrl.AbsoluteUri;
-        var webhookUrl = $"https://api.telegram.org/bot{myBotToken}/setWebhook?url={botWebhookUrl}";
-        await bot.SetWebhook(webhookUrl, allowedUpdates: [], secretToken: Config.Value.Token, cancellationToken: ct);
-        return $"Webhook set to {webhookUrl}";
+        var webHookURL = "https://o2asbo-46-138-39-19.ru.tuna.am";
+        await bot.SetWebhook(webHookURL, allowedUpdates: [], secretToken: Config.Value.Token, cancellationToken: ct);
+        return $"Webhook set to {webHookURL}";
     }
 
     [HttpPost]

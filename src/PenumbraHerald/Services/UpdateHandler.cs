@@ -26,12 +26,13 @@ public class UpdateHandler(ITelegramBotClient bot) : IUpdateHandler
     public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update,
         CancellationToken cancellationToken)
     {
-        cancellationToken.ThrowIfCancellationRequested();
-        await (update switch
-        {
-            { Message: { } message }                        => OnMessage(message),
-        });
-    }
+            cancellationToken.ThrowIfCancellationRequested();
+            await (update switch
+            {
+                { Message: { } message }                        => OnMessage(message),
+                _                                               => throw new NotImplementedException()
+            });
+        }
 
     private async Task<Message> OnMessage(Message msg)
     {
