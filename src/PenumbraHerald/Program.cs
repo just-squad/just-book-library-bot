@@ -1,25 +1,11 @@
-﻿using System;
-using Telegram.Bot;
-using Telegram.Bot.Polling;
-using Telegram.Bot.Types;
-using Telegram.Bot.Types.ReplyMarkups;
-using DotNetEnv;
-using PenumbraHerald.settings;
-using Insight.TelegramBot.WebHook.Controllers;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-Env.Load();
-var token = Environment.GetEnvironmentVariable("TOKEN");
+﻿using Telegram.Bot;
+using PenumbraHerald.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
-var botConfiguration = builder.Configuration.GetSection("BotConfiguration");
+var botConfiguration = builder.Configuration.GetSection(BotConfiguration.Name);
 builder.Services.Configure<BotConfiguration>(botConfiguration);
 builder.Services.AddHttpClient("telegramwebhook").RemoveAllLoggers().AddTypedClient<ITelegramBotClient>(
     httpClient => new TelegramBotClient(botConfiguration.Get<BotConfiguration>()!.Token, httpClient));
-
-builder.Services.AddSingleton<DefaultUpdateController>();
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(opt => { });
@@ -30,7 +16,7 @@ app.UseSwagger();
 app.UseSwaggerUI(opt =>
 {
     opt.SwaggerEndpoint("/swagger/v1/swagger.json", "PenumbraHerald");
-    opt.RoutePrefix = string.Empty;
+    opt.RoutePrefix = "swagger";
 });
 
 app.UseHttpsRedirection();

@@ -8,11 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetEnv" Version="3.1.1" />
-      <PackageReference Include="Insight.TelegramBot.DependencyInjection.WebHook" Version="0.20.0" />
-      <PackageReference Include="Insight.TelegramBot.DependencyInjection.WebHook.Controllers" Version="0.20.0" />
-      <PackageReference Include="Insight.TelegramBot.WebHook" Version="0.20.0" />
-      <PackageReference Include="Insight.TelegramBot.WebHook.Controllers" Version="0.20.0" />
       <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.7" />
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.0" />
