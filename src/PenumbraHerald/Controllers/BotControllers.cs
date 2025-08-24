@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using PenumbraHerald.Services;
 using PenumbraHerald.Settings;
 using Telegram.Bot;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 
 namespace PenumbraHerald.Controllers;
@@ -14,7 +14,8 @@ public class BotController(IOptions<BotConfiguration> config) : ControllerBase
     [HttpGet("setWebhook")]
     public async Task<string> SetWebHook([FromServices] ITelegramBotClient bot, CancellationToken ct)
     {
-        var webHookUrl = new Uri(config.Value.WebHookUrl + "/api/v1/bot/update");;
+        var webHookUrl = new Uri(config.Value.WebHookUrl + "/api/v1/bot/update");
+        ;
         await bot.SetWebhook(
             webHookUrl.ToString(),
             allowedUpdates: [],
@@ -24,8 +25,11 @@ public class BotController(IOptions<BotConfiguration> config) : ControllerBase
     }
 
     [HttpPost("update")]
-    public async Task<IActionResult> Post([FromBody] Update update, [FromServices] ITelegramBotClient bot,
-        [FromServices] UpdateHandler handleUpdateService, CancellationToken ct)
+    public async Task<IActionResult> Post(
+        [FromBody] Update update,
+        [FromServices] ITelegramBotClient bot,
+        [FromServices] IUpdateHandler handleUpdateService,
+        CancellationToken ct)
     {
         if (Request.Headers[Constants.TelegramHeaders.SecretToken] != config.Value.SecretToken)
             return Forbid();
@@ -35,8 +39,11 @@ public class BotController(IOptions<BotConfiguration> config) : ControllerBase
         }
         catch (Exception exception)
         {
-            await handleUpdateService.HandleErrorAsync(bot, exception,
-                Telegram.Bot.Polling.HandleErrorSource.HandleUpdateError, ct);
+            await handleUpdateService.HandleErrorAsync(
+                bot,
+                exception,
+                HandleErrorSource.HandleUpdateError,
+                ct);
         }
 
         return Ok();

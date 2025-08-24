@@ -1,9 +1,11 @@
-﻿using Telegram.Bot;
+﻿using PenumbraHerald.Extensions;
+using Telegram.Bot;
 using PenumbraHerald.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 var botConfiguration = builder.Configuration.GetSection(BotConfiguration.Name);
 builder.Services.Configure<BotConfiguration>(botConfiguration);
+builder.Services.AddUpdateHandlers();
 builder.Services.AddHttpClient("telegramwebhook").RemoveAllLoggers().AddTypedClient<ITelegramBotClient>(
     httpClient => new TelegramBotClient(botConfiguration.Get<BotConfiguration>()!.Token, httpClient));
 
