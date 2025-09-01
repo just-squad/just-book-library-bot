@@ -1,30 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using PenumbraHerald.Services;
-using PenumbraHerald.settings;
+using PenumbraHerald.Settings;
 using Telegram.Bot;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
-using Insight.TelegramBot.WebHook.Controllers;
-
 
 namespace PenumbraHerald.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class BotController(IOptions<BotConfiguration> Config) : ControllerBase
+[Route("/api/v1/bot")]
+public class BotController(IOptions<BotConfiguration> config) : ControllerBase
 {
     [HttpGet("setWebhook")]
     public async Task<string> SetWebHook([FromServices] ITelegramBotClient bot, CancellationToken ct)
     {
-        var webHookURL = "https://o2asbo-46-138-39-19.ru.tuna.am";
-        await bot.SetWebhook(webHookURL, allowedUpdates: [], secretToken: Config.Value.Token, cancellationToken: ct);
-        return $"Webhook set to {webHookURL}";
+        var webHookUrl = new Uri(config.Value.WebHookUrl + "/api/v1/bot/update");
+        ;
+        await bot.SetWebhook(
+            webHookUrl.ToString(),
+            allowedUpdates: [],
+            secretToken: config.Value.SecretToken,
+            cancellationToken: ct);
+        return $"Webhook set to {webHookUrl}";
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Update update, [FromServices] ITelegramBotClient bot, [FromServices] UpdateHandler handleUpdateService, CancellationToken ct)
+    [HttpPost("update")]
+    public async Task<IActionResult> Post(
+        [FromBody] Update update,
+        [FromServices] ITelegramBotClient bot,
+        [FromServices] IUpdateHandler handleUpdateService,
+        CancellationToken ct)
     {
-        if (Request.Headers["X-Telegram-Bot-Api-Secret-Token"] != Config.Value.Token)
+        if (Request.Headers[Constants.TelegramHeaders.SecretToken] != config.Value.SecretToken)
             return Forbid();
         try
         {
@@ -32,8 +39,13 @@ public class BotController(IOptions<BotConfiguration> Config) : ControllerBase
         }
         catch (Exception exception)
         {
-            await handleUpdateService.HandleErrorAsync(bot, exception, Telegram.Bot.Polling.HandleErrorSource.HandleUpdateError, ct);
+            await handleUpdateService.HandleErrorAsync(
+                bot,
+                exception,
+                HandleErrorSource.HandleUpdateError,
+                ct);
         }
+
         return Ok();
     }
 }

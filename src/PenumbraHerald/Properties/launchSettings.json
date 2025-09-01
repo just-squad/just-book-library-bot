@@ -1,0 +1,56 @@
+{
+  "profiles": {
+    "Local": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local",
+        "ASPNETCORE_HTTP_PORT": "5000",
+        "ASPNETCORE_GRPC_PORT": "5002",
+        "ASPNETCORE_DEBUG_PORT": "5004",
+        "BOTCONFIGURATION:TOKEN": "7737306620:AAGpbUyglQpNZTU16JVgWMAYnr5ZjtbLng4",
+        "BOTCONFIGURATION:SECRETTOKEN": "e6c21db3-4343-4db5-914d-dfd0e8809ec9"
+      }
+    },
+    "Development": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "http://localhost:5000/swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HTTP_PORT": "5000",
+        "ASPNETCORE_GRPC_PORT": "5002",
+        "ASPNETCORE_DEBUG_PORT": "5004",
+        "BOTCONFIGURATION:TOKEN": "7737306620:AAGpbUyglQpNZTU16JVgWMAYnr5ZjtbLng4",
+        "BOTCONFIGURATION:SECRETTOKEN": "b41dbf16-8348-4aab-abe9-e09f5e2a69b1"
+      }
+    },
+    "Staging": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "http://localhost:5000/swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging",
+        "ASPNETCORE_HTTP_PORT": "5000",
+        "ASPNETCORE_GRPC_PORT": "5002",
+        "ASPNETCORE_DEBUG_PORT": "5004",
+        "BOTCONFIGURATION:TOKEN": "7737306620:AAGpbUyglQpNZTU16JVgWMAYnr5ZjtbLng4",
+        "BOTCONFIGURATION:SECRETTOKEN": "4ff8e77d-8562-403e-8ff7-1504483a10d6"
+      }
+    },
+    "Production": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "http://localhost:5000/swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "ASPNETCORE_HTTP_PORT": "5000",
+        "ASPNETCORE_GRPC_PORT": "5002",
+        "ASPNETCORE_DEBUG_PORT": "5004",
+        "BOTCONFIGURATION:TOKEN": "7737306620:AAGpbUyglQpNZTU16JVgWMAYnr5ZjtbLng4",
+        "BOTCONFIGURATION:SECRETTOKEN": "166335a9-0549-4499-98f1-f5f8e0034460"
+      }
+    }
+  }
+}
