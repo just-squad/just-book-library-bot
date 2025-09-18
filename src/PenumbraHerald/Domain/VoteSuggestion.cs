@@ -1,4 +1,4 @@
-namespace PenumbraHerald.Domain;
+namespace PenumbraHerald.Domain; // ЧОКАВО какой смысл стоит за Domain
 
 public record struct SuggestionKey(int SuggestionId, long ChatId); // ЧОКАВО record
 
